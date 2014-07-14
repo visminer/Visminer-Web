@@ -1,4 +1,4 @@
-<%@page import="org.viz.main.Viz"%>
+<%@page import="org.visminer.web.main.Viz"%>
 <%@page import="java.util.Collections"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="java.util.List"%>
@@ -46,14 +46,6 @@
 								name="local_repository_owner" class="form-control"
 								placeholder="example: Visminer-web" required="required" />
 						</div>
-						<div class="form-group">
-							<label>NEW REPOSITORY ?</label>
-							<div>
-								<label><input type="radio" name="new_repository"
-									value="1" checked='checked' />Yes</label> <label><input
-									type="radio" name="new_repository" value="0" />No</label>
-							</div>
-						</div>
 					</div>
 					<div class="col-md-5 well col-md-offset-1" style="margin-top: 0px;">
 						<h3>Persistence Properties</h3>
@@ -75,6 +67,11 @@
 					<div class="col-md-6 well" style="margin-top: 0px;">
 						<h3>Remote Repository GitHub Properties</h3>
 						<hr />
+						<div class="form-group">
+							<label>REMOTE REPOSITORY GIT</label> <input type="text"
+								name="remote_repository_git" class="form-control"
+								placeholder="example: visminer" />
+						</div>
 						<div class="form-group">
 							<label>REMOTE REPOSITORY LOGIN</label> <input type="text"
 								name="remote_repository_login" class="form-control"
