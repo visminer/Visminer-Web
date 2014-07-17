@@ -1,79 +1,43 @@
-<%@page import="org.visminer.web.servlet.IndexServlet"%>
-<%@page import="org.visminer.web.main.Viz"%>
-<%@page import="org.visminer.web.javascript.ExportToJavascript"%>
-<%@page import="org.visminer.model.MetricValue"%>
-<%@page import="java.util.Collections"%>
-<%@page import="java.io.PrintWriter"%>
-<%@page import="java.util.List"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%
-ExportToJavascript js = new ExportToJavascript();
-PrintWriter writer = response.getWriter(); 
-writer.println("<script type='text/javascript' src='js/jquery-2.1.1.min.js'></script>"); 
-String charts = js.exportAllCharts((String)request.getAttribute("metricName").toString(),(String)request.getAttribute("metricDescription"),(String)request.getAttribute("values"),(String)request.getAttribute("greater"),(String)request.getAttribute("selectedChart"));
-writer.println(charts);
-%>
 <!DOCTYPE html PUBLIC>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Visualization</title>
-<%@include file='stylesheet.jsp' %>
-<%@include file='script.jsp' %>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#chartSelect > option").each(function() {
-	    if($(this).val() == '<%= request.getAttribute("selectedChart") %>'){
-	    	$(this).prop("selected",true);
-	    }; 
-	});
-	$("#relatedTo > option").each(function() {
-	    if($(this).val() == '<%= request.getAttribute("relatedto") %>'){
-	    	$(this).prop("selected",true);
-	    }; 
-	});
-	$("#metric > option").each(function() {
-	    if($(this).val() == '<%= request.getAttribute("metricName") %>'){
-	    	$(this).prop("selected",true);
-	    }; 
-	});
-});
-</script>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/style.css">
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
 </head>
 <body>
-	<%@include file='top.jsp' %>
-	<div class="container" id="content" style="margin-top: 80px;">
-        <div class="row" id="top">
-			<div class="col-md-12" style="margin-top: 0px;">
-           		<section id="metrics" class="col-md-3">
-					<div class="inputs">
-						<h4>Related to:</h4>
-						<select id="relatedTo" name="relatedto" onchange="change()">
-							<option value="file">File</option>
-							<option value="tag">Tag</option>
-						</select>
-						<h4>Graphics:</h4>
-						<select id="chartSelect" name="graphic" onchange="change();">
-							<option value="bubbleChart">Bubble Chart</option>
-							<option value="histogramChart">Histogram Chart</option>
-						</select>
-					</div>
-					<div>
-						<div>
-							<h4>List of implemented metrics:</h4>
-						</div>
-						<select id="metric" name="metric" onchange="change();">
-							<c:forEach items="${metrics}" var="metric">
-					        	<option value="${metric.name}">${metric.name} - ${metric.description}</option>
-					    	</c:forEach>
-						</select>
-					</div>
-				</section>
-				<section id="chart" class="col-md-9"></section>
-           </div>
-    	</div>
+	<div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">VisMiner WEB</h3>
+              <ul class="nav masthead-nav">
+					<li><a href="metric.do">Metrics</a></li>
+					<li><a href="issuesStatus.do">Issues Status</a></li>
+					<li><a href="issuesQuantity.do">Issues Quantity</a></li>
+				</ul>
+            </div>
+          </div>
+          <div class="inner cover">
+            <h1 class="cover-heading">VisMiner Web.</h1>
+            <p class="lead">Project example of visualization using the VisMiner API, Google Charts and D3JS. <br/>
+            	Examples mostly utilizing information about Metrics, Issues, Milestones and correlations get from VisMiner API.</p>
+            <p class="lead">
+              <a href="index.do" class="btn btn-lg btn-default">Go to Home.</a>
+            </p>
+          </div>
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Get source project at <a href="http://www.github.com/visminer/visminer-web">VisMiner Web</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <%@include file='footer.jsp' %>
 </body>
 </html>

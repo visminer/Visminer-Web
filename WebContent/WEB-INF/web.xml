@@ -3,13 +3,7 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
-	<display-name>Viz</display-name>
-	<welcome-file-list>
-		<welcome-file>/</welcome-file>
-		<welcome-file>index</welcome-file>
-		<welcome-file>welcome.jsp</welcome-file>
-		<welcome-file>welcome.do</welcome-file>
-	</welcome-file-list>
+	<display-name>VisMiner Web</display-name>
 	<filter>
 		<filter-name>Filter</filter-name>
 		<filter-class>org.visminer.web.filter.Main</filter-class>
@@ -25,6 +19,14 @@
 	<servlet-mapping>
 		<servlet-name>index</servlet-name>
 		<url-pattern>/index.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>metric</servlet-name>
+		<servlet-class>org.visminer.web.servlet.MetricServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>metric</servlet-name>
+		<url-pattern>/metric.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>config</servlet-name>
