@@ -15,19 +15,19 @@ import org.visminer.model.MetricValue;
 import org.visminer.web.model.Graphic;
 
 /**
- * Servlet implementation class IndexServlet
+ * Servlet implementation class ZoomableCirclePackingServlet
  */
-@WebServlet("/MetricServlet")
-public class MetricServlet extends HttpServlet {
+@WebServlet("/ZoomableCirclePackingServlet")
+public class ZoomableCirclePackingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	/** 
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public MetricServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ZoomableCirclePackingServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -42,7 +42,7 @@ public class MetricServlet extends HttpServlet {
 		}
 		String chartChosen = request.getParameter("c");
 		if(chartChosen == null){
-			chartChosen = "bubbleChart";
+			chartChosen = "ZoomableCirclePacking";
 		}
 		String relatedtoChosen = request.getParameter("r");
 		if(relatedtoChosen == null){
@@ -64,7 +64,6 @@ public class MetricServlet extends HttpServlet {
 		//Get json with datas
 		Graphic g = new Graphic("chart.json");
 		String values = g.generateChart(chosen.getMetricValues(),relatedtoChosen,metricChosen);
-
 		//Setting the selected chart 
 		request.setAttribute("selectedChart",chartChosen);	
 		request.setAttribute("relatedto",relatedtoChosen);	
@@ -73,8 +72,7 @@ public class MetricServlet extends HttpServlet {
 		request.setAttribute("metrics",vm.getMetrics());
 		request.setAttribute("metricName",chosen.getName());
 		request.setAttribute("metricDescription",chosen.getDescription());	
-		request.getRequestDispatcher("/metric.jsp").forward(request, response);
-
+		request.getRequestDispatcher("/zoomableCirclePacking.jsp").forward(request, response);
 	}
 
 	/**
