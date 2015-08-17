@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="Visminer-Web">
-        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="Visminer-Web"/>
+        <wb-resource deploy-path="/" source-path="/web" tag="defaultRootSource"/>
+        <dependent-module archiveName="visminer_master.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/visminer_master/visminer_master">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/Visminer-Web/build/classes"/>
+        <property name="context-root" value="visminerweb"/>
     </wb-module>
 </project-modules>
