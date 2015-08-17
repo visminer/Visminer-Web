@@ -3,7 +3,7 @@
 	<name>Visminer-Web</name>
 	<comment></comment>
 	<projects>
-		<project>visminer_master</project>
+		<project>visminer</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
