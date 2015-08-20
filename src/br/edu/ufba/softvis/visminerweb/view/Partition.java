@@ -21,6 +21,8 @@ import com.google.gson.Gson;
 @ViewScoped
 public class Partition {
 
+	private static final String JSON_PREFIX = "partition";
+
 	@ManagedProperty(value = "#{selector}")
 	private Selector selector;
 
@@ -135,7 +137,7 @@ public class Partition {
 
 	public String getPartitionJSON() {
 		// creates a new JSON file in the TEMP directory
-		String jsonFile = FileUtils.generateJSONFileName();
+		String jsonFile = FileUtils.generateJSONFileName(JSON_PREFIX);
 		String jsonPath = FileUtils.getTempPath() + "/" + jsonFile;
 		// creates partition branches
 		PartitionBranch<?> partition = createPartition(selector.getCommits());

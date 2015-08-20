@@ -11,13 +11,13 @@ public class FileUtils {
 
 	public static final String TMP_PATH = "/tmp";
 
-	public static String generateJSONFileName() {
+	public static String generateJSONFileName(String prefix) {
 		String json = "";
 
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
 				.getExternalContext().getSession(false);
 		String id = session.getId();
-		json = id + "partition.json";
+		json = id + "." + prefix + ".json";
 
 		return json;
 	}
