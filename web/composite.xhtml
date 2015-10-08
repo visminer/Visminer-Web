@@ -6,8 +6,18 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:body>
-	<ui:include src="views/repoinfo.xhtml" />
-	<ui:include src="views/commits.xhtml" />
-	<ui:include src="views/affectedfiles.xhtml" />
+	<c:choose>
+		<c:when test="${selector.perspective=='DEFAULT'}">
+			<ui:include src="views/repoinfo.xhtml" />
+			<ui:include src="views/commits.xhtml" />
+			<ui:include src="views/affectedfiles.xhtml" />
+		</c:when>
+		<c:when test="${selector.perspective=='TECHNICAL_DEBT'}">
+			<br />
+			<br />
+			TD
+			<br />
+		</c:when>
+	</c:choose>
 </h:body>
 </html>
