@@ -46,9 +46,10 @@ public class Selector {
 			List<Tree> trees = repository.getTrees();
 
 			treeNodes = new DefaultTreeNode(repository.getName(), null);
-
-			for (Tree t : trees) {
-				new DefaultTreeNode(t, treeNodes);
+			if (trees != null) {
+				for (Tree t : trees) {
+					new DefaultTreeNode(t, treeNodes);
+				}
 			}
 		} else {
 			treeNodes = new DefaultTreeNode("No items to show", null);
@@ -90,8 +91,7 @@ public class Selector {
 		if (selectedTree != null) {
 			CommitRetriever retriever = RetrieverFactory
 					.create(CommitRetriever.class);
-
-			commits.addAll(retriever.retrieveByTree(selectedTree));
+			commits.addAll(retriever.retrieveByTree(selectedTree.getId()));
 			for (Commit commit : commits) {
 				commitsMap.put(commit.getId(), commit);
 			}
