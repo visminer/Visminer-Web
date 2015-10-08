@@ -16,17 +16,13 @@ public class AffectedFile {
 		name = f.getName();
 
 		FileState fstate = file.getFileState();
-		if (fstate.isDeleted()) {
-			state = "deleted";
-		} else {
-			state = "";
-			if (fstate.getLinesAdded() > 0) {
-				state += fstate.getLinesAdded() + " lines added";
-			}
-			if (fstate.getLinesRemoved() > 0) {
-				state += (state.equals("") ? "" : " and ")
-						+ fstate.getLinesAdded() + " lines removed";
-			}
+		state = "";
+		if (fstate.getLinesAdded() > 0) {
+			state += fstate.getLinesAdded() + " lines added";
+		}
+		if (fstate.getLinesRemoved() > 0) {
+			state += (state.equals("") ? "" : " and ") + fstate.getLinesAdded()
+					+ " lines removed";
 		}
 	}
 
