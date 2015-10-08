@@ -57,7 +57,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="web/WEB-INF/visminer/visminer.jar">
+	<classpathentry kind="lib" path="web/WEB-INF/visminer/visminer.jar" sourcepath="/Visminer/src/main/java">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
