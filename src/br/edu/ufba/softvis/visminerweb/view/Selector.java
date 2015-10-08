@@ -7,7 +7,7 @@ import java.util.TreeMap;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
@@ -18,11 +18,14 @@ import br.edu.ufba.softvis.visminer.model.business.Tree;
 import br.edu.ufba.softvis.visminer.retriever.CommitRetriever;
 import br.edu.ufba.softvis.visminer.retriever.RepositoryRetriever;
 import br.edu.ufba.softvis.visminerweb.factory.RetrieverFactory;
+import br.edu.ufba.softvis.visminerweb.util.NavigationUtils;
 
 @ManagedBean(name = "selector")
-@ViewScoped
+@SessionScoped
 public class Selector {
 
+	private Perspective perspective = Perspective.DEFAULT; 
+	
 	private Repository repository;
 	private List<Repository> repositories = new ArrayList<Repository>();
 	private Map<Integer, Commit> commitsMap = new TreeMap<Integer, Commit>();
@@ -122,6 +125,20 @@ public class Selector {
 		}
 
 		return commit;
+	}
+	
+	public void showPerspective(Perspective perspective) {
+		this.perspective = perspective;
+		
+		NavigationUtils.reload();
+	}
+	
+	public Perspective getPerspective() {
+		return perspective;
+	}
+	
+	public String getPerspectiveName() {
+		return Perspective.toString(getPerspective());
 	}
 
 }
