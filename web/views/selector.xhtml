@@ -45,6 +45,14 @@
 				</p:tree>
 			</p:overlayPanel>
 		</f:facet>
+		<f:facet name="right">
+            <p:menuButton value="#{selector.perspectiveName}">
+                <p:menuitem value="Default" 
+                	actionListener="#{selector.showPerspective('DEFAULT')}" />
+                <p:menuitem value="Technical debt" 
+                	actionListener="#{selector.showPerspective('TECHNICAL_DEBT')}" />
+            </p:menuButton>
+        </f:facet>
 	</p:toolbar>
 </h:body>
 </html>
