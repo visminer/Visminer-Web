@@ -13,14 +13,13 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import br.edu.ufba.softvis.visminer.config.DBConfig;
-import br.edu.ufba.softvis.visminerweb.loader.VisminerLoaderListener;
+import br.edu.ufba.softvis.visminerweb.loader.VisminerInitializer;
+import br.edu.ufba.softvis.visminerweb.util.FileUtils;
 import br.edu.ufba.softvis.visminerweb.view.converter.DriverConverter;
 
 @ManagedBean(name = "configurator")
 @ViewScoped
 public class Configurator {
-
-	private static final String CONFIG_PATH = "/WEB-INF";
 
 	public List<String> getDrivers() {
 		return DriverConverter.getDrivers();
@@ -109,20 +108,17 @@ public class Configurator {
 		DBConfig dbConfig = DriverConverter.getDbConfig();
 		dbConfig.setGeneration("create-tables");
 
-		String path = FacesContext.getCurrentInstance().getExternalContext()
-				.getRealPath(CONFIG_PATH)
-				+ "/dbconfig.properties";
-
 		try {
-			OutputStream fileOut = new FileOutputStream(path);
+			OutputStream fileOut = new FileOutputStream(
+					FileUtils.getDBConfigFilePath());
 			getProperties(dbConfig).store(fileOut, "database configuration");
 			fileOut.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		VisminerLoaderListener.configure(path);
-		if (VisminerLoaderListener.configOK()) {
+		VisminerInitializer.configure();
+		if (VisminerInitializer.configOK()) {
 			FacesContext.getCurrentInstance().addMessage(
 					null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Success",
@@ -134,9 +130,9 @@ public class Configurator {
 							"Failed to save configuration!"));
 		}
 	}
-	
+
 	public void gotoVisminer() {
-		
+
 	}
-	
+
 }

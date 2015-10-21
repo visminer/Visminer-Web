@@ -18,6 +18,7 @@ import br.edu.ufba.softvis.visminer.model.business.Tree;
 import br.edu.ufba.softvis.visminer.retriever.CommitRetriever;
 import br.edu.ufba.softvis.visminer.retriever.RepositoryRetriever;
 import br.edu.ufba.softvis.visminerweb.factory.RetrieverFactory;
+import br.edu.ufba.softvis.visminerweb.loader.VisminerInitializer;
 import br.edu.ufba.softvis.visminerweb.util.NavigationUtils;
 
 @ManagedBean(name = "selector")
@@ -36,14 +37,18 @@ public class Selector {
 	private Tree selectedTree;
 
 	@PostConstruct
-	private void initRepositories() {
+	private void init() {
+		// setup Visminer DBConfig
+		VisminerInitializer.configure();
+		
+		// setup repositories view
 		RepositoryRetriever retriever = RetrieverFactory
 				.create(RepositoryRetriever.class);
 
 		repositories.clear();
 		repositories.addAll(retriever.retrieveAll());
 	}
-
+	
 	private void buildTree() {
 		if (repository != null) {
 			List<Tree> trees = repository.getTrees();

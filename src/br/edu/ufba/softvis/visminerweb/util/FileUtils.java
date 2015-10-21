@@ -10,6 +10,9 @@ import javax.servlet.http.HttpSession;
 public class FileUtils {
 
 	public static final String TMP_PATH = "/tmp";
+	public static final String CONFIG_PATH = "/WEB-INF";
+	public static final String DBCONFIG_FILE = CONFIG_PATH
+			+ "/dbconfig.properties";
 
 	public static String generateJSONFileName(String prefix) {
 		String json = "";
@@ -48,6 +51,13 @@ public class FileUtils {
 		FileOutputStream out = new FileOutputStream(filePath);
 		out.write(dataToWrite);
 		out.close();
+	}
+
+	public static String getDBConfigFilePath() {
+		String path = FacesContext.getCurrentInstance().getExternalContext()
+				.getRealPath(DBCONFIG_FILE);
+
+		return path;
 	}
 
 }
