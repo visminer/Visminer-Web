@@ -21,4 +21,7 @@
 		<param-name>primefaces.THEME</param-name>
 		<param-value>hot-sneaks</param-value>
 	</context-param>
+	<welcome-file-list>
+		<welcome-file>main.softvis</welcome-file>
+	</welcome-file-list>
 </web-app>
