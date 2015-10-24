@@ -10,7 +10,7 @@
 <h:body>
 	<p:panel id="details"
 		header="Viewing details from commit: #{selector.repository.name}::#{selector.selectedTree}::#{selector.selectedCommit.name}"
-		toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500"
+		toggleable="true" closable="false" toggleSpeed="500" closeSpeed="500"
 		rendered="#{selector.selectedCommit != null}">
 		<h:panelGrid columns="2">
 			<h:panelGroup style="display: inline-table; width: 20%; float: left;">

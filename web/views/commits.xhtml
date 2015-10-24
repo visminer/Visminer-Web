@@ -11,7 +11,7 @@
 	<h:inputHidden id="commitId" value="#{selector.commitId}" />
 	<p:panel id="commits"
 		header="Viewing commits from: #{selector.repository.name}::#{selector.selectedTree}"
-		toggleable="true" closable="true" toggleSpeed="500" closeSpeed="500"
+		toggleable="true" closable="false" toggleSpeed="500" closeSpeed="500"
 		rendered="#{selector.selectedTree != null}">
 		<h:panelGrid columns="1" cellpadding="2">
 			<p:tabView>
