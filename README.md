@@ -1,6 +1,10 @@
 Visminer-Web
 ============
 
+##[DEPRECATED]
+
+###This project is no longer maintained, its development was moved to other repository. If you want updates fork this repository or check the Visminer repository
+
 This project is a example of application of software visualization using the visminer API.
 
 Is implemented using computer with configuration:
